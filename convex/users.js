@@ -1,0 +1,79 @@
+// import { mutation } from "./_generated/server";
+// import { v } from "convex/values";
+
+
+// export const CreateUser = mutation({
+//     args: {
+//          name:v.string(),
+//                 email:v.string(),
+//                 picture:v.string(),
+//                 uid:v.string(),
+//     },
+//     handler: async (ctx, args) => {
+//         // if user already exists, return early
+// const user = await ctx.db.query("user").filter(q => q.eq(q.field('email'), args.email)).collect()
+// console.log(user);
+        
+
+
+
+
+//         // if user is new, create a new user
+
+//         if(user.length ==0){
+//        const result = await ctx.db.insert("users", {
+//                 name: args.name,
+//                 email: args.email,
+//                 picture: args.picture,
+//                 uid: args.uid,
+//             });
+//             console.log(result)
+//         }
+//     }
+
+// })
+import { query } from "./_generated/server";
+import { mutation } from "./_generated/server";
+import { v } from "convex/values";
+
+export const createUser = mutation({
+  args: {
+    name: v.string(),
+    email: v.string(),
+    picture: v.string(),
+    uid: v.string(),
+  },
+  handler: async (ctx, args) => {
+    // check if user already exists
+    const user = await ctx.db
+      .query("users") // ✅ Fixed here
+      .filter((q) => q.eq(q.field("email"), args.email))
+      .collect();
+
+    console.log(user);
+
+    // if user doesn't exist, create it
+    if (user.length === 0) {
+      const result = await ctx.db.insert("users", {
+        name: args.name,
+        email: args.email,
+        picture: args.picture,
+        uid: args.uid,
+      });
+      console.log(result);
+    }
+  },
+});
+
+export const GetUser = query({
+  args: {
+    email:v.string(),
+  },
+  handler:async(ctx,args) => {
+     const user = await ctx.db
+      .query("users") // ✅ Fixed here
+      .filter((q) => q.eq(q.field("email"), args.email))
+      .collect();
+      return user[0]; // Return the first user found
+  }
+})
