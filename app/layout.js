@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Provider from "./Provide1r"; // ✅ make sure the path is correct
+import Provider from "./Provider"; // ✅ make sure the path is correct
 import ConvexClientProvider from "./ConvexClientProvider";
 
 export const metadata = {

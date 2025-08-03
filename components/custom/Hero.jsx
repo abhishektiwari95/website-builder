@@ -6,7 +6,7 @@ import { Link } from "lucide-react";
 import { useState, useContext } from "react";
 import { MessagesContext } from '@/context/MessagesContext';
 import { UserDetailContext } from '@/context/UserDetailContext';
-import { Colors } from "@/data/Colors";
+import  Colors  from "@/data/Colors";
 import SignInDialog from "./SignInDialog";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
@@ -45,7 +45,7 @@ const router =useRouter();
     <div className="flex flex-col items-center mt-36  xl:mt-52 gap-2">
       <h2 className="font-bold text-4xl">{Lookup.HERO_HEADING}</h2>
       <p className="text-gray-400 text-xs">{Lookup.HERO_DESC}</p>
-      <div className="p-5 border rounded-xl max-w-xl w-full">
+      <div className="p-5 border rounded-xl max-w-xl w-full" style={{ backgroundColor: Colors.CHAT_BACKGROUND }}>
         <div className="flex gap-2">
           <textarea
             className="outline-none bg-transparent w-full h-32 max-h-56 resize-none text-sm"

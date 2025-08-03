@@ -6,7 +6,7 @@ import React from 'react'
 const Workspace = () => {
   return (
     <div className='p-10'>
-      <div className='grid grid-cols-1 md:grid-cols-3'>
+      <div className='grid grid-cols-1 md:grid-cols-3 gap-7'>
 <Chatview/>
 <div className='col-span-2'>
     <Codeview/>

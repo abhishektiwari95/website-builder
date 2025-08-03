@@ -1,5 +1,5 @@
 import Image from "next/image";
-import provider from "./Provide1r";
+import provider from "./Provider";
 import Hero from "@/components/custom/Hero";
  
 
