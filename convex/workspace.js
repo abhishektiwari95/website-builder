@@ -22,3 +22,16 @@ const result = await ctx.db.get(args.workspaceId);
     return result;
   }
 })
+
+export const UpdateMessages=mutation({
+  arg:{
+    workspaceId:v.id("workspace"),
+    messages:v.any()
+  },
+  handler:async(ctx,args)=>{
+    const result = await ctx.db.patch(args.workspaceId,{
+      messages:args.messages
+    });
+    return result
+  }
+})
