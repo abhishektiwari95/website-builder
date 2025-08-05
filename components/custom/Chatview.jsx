@@ -45,6 +45,8 @@ const [loading,setLoading] = useState(false);
   }
 }, [message]);
 
+// ai ne kiya hai  
+
   
 // const GetAiResponse = async () => {
 
@@ -112,6 +114,13 @@ const onGenerate = (input)=>{
   }])
   setUserInput('')
 }
+//ai wala fix iframe ka code
+useEffect(() => {
+  const iframes = document.querySelectorAll('iframe');
+  iframes.forEach((frame, index) => {
+    console.log(`Iframe ${index}:`, frame.src);
+  });
+}, []);
   return (
     <div className="relative h-[85vh] flex flex-col">
       <div className="flex-1 overflow-y-scroll scrollbar-hide">

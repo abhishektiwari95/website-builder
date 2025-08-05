@@ -7,6 +7,7 @@ export async function POST(req) {
     const result = await chatSession.sendMessage(prompt);
     const AIresp =   result.response.text();  
     return NextResponse.json({ result: AIresp });
+    
   } catch (e) {
     console.error("AI Error:", error); // ✅ helpful for debugging
     console.log(error)
